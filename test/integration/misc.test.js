@@ -37,20 +37,20 @@ describe('Misc', () => {
     });
   });
 
-  describe('GET /spec', () => {
-    it('<200> should always return API specification in swagger format', async () => {
-      const res = await request
-        .get('/spec')
-        .expect('Content-Type', /json/)
-        .expect(200);
+  // describe('GET /spec', () => {
+  //   it('<200> should always return API specification in swagger format', async () => {
+  //     const res = await request
+  //       .get('/spec')
+  //       .expect('Content-Type', /json/)
+  //       .expect(200);
 
-      const spec = res.body;
-      expect(spec).toHaveProperty('openapi', '3.0.0');
-      expect(spec).toHaveProperty('info');
-      expect(spec).toHaveProperty('paths');
-      expect(spec).toHaveProperty('tags');
-    });
-  });
+  //     const spec = res.body;
+  //     expect(spec).toHaveProperty('openapi', '3.0.0');
+  //     expect(spec).toHaveProperty('info');
+  //     expect(spec).toHaveProperty('paths');
+  //     expect(spec).toHaveProperty('tags');
+  //   });
+  // });
 
   describe('GET /status', () => {
     it('<200> should return `healthy` status if all components are healthy', async () => {
