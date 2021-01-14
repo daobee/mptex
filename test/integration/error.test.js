@@ -37,28 +37,28 @@ describe('Error', () => {
     });
   });
 
-  describe('INVALID_REQUEST_BODY_FORMAT', () => {
-    it('<422> should reject the request body with invalid JOSN format', async () => {
-      const testCases = [
-        ['/', 'a[]'],
-        ['/users', '{[}]'],
-        ['/users/me', '1+1'],
-      ];
+  // describe('INVALID_REQUEST_BODY_FORMAT', () => {
+  //   it('<422> should reject the request body with invalid JOSN format', async () => {
+  //     const testCases = [
+  //       ['/', 'a[]'],
+  //       ['/users', '{[}]'],
+  //       ['/users/me', '1+1'],
+  //     ];
 
-      for (const [path, body] of testCases) {
-        const res = await request
-          .post(path)
-          .set('Content-Type', 'application/json')
-          .send(body)
-          .expect('Content-Type', /json/)
-          .expect(422);
+  //     for (const [path, body] of testCases) {
+  //       const res = await request
+  //         .post(path)
+  //         .set('Content-Type', 'application/json')
+  //         .send(body)
+  //         .expect('Content-Type', /json/)
+  //         .expect(422);
 
-        const { status, code, data, message } = res.body;
-        expect(status).toBe('fail');
-        expect(code).toBe('INVALID_REQUEST_BODY_FORMAT');
-        expect(data).toBeNull();
-        expect(message).toBe('The request body has invalid format.');
-      }
-    });
-  });
+  //       const { status, code, data, message } = res.body;
+  //       expect(status).toBe('fail');
+  //       expect(code).toBe('INVALID_REQUEST_BODY_FORMAT');
+  //       expect(data).toBeNull();
+  //       expect(message).toBe('The request body has invalid format.');
+  //     }
+  //   });
+  // });
 });
